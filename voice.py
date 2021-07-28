@@ -14,6 +14,7 @@ import docx2txt
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import json
+import subprocess
 
 listener =sr.Recognizer()
 engine=pyttsx3.init()
@@ -44,9 +45,9 @@ def take_command():
 def weather():
 
     # Enter your API key here
-    talk("Enter the api key")
-    api_key=input("Enter the api key")
-
+    #talk("Enter the api key")
+    #api_key=input("Enter the api key")
+    #api_key="b06d8716b34951a09cf443cc828adf2c"
     # base_url variable to store url
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
 
@@ -177,6 +178,39 @@ def match_resume():
     talk(match)
     talk("percent")
 
+def application():
+    app=talk("Please tell from the below applications you want to open")
+    print("\n\t 1.MICROSOFT WORD \t 2.MICROSOFT POWERPOINT \n\t 3.MICROSOFT EXCEL \t 4.GOOGLE CHROME \n\t 5.VLC PLAYER \t 6.ADOBE PDF Viewer\n\t 7.MOZILLA FIREFOX \n\t 8.NOTEPAD \t 9.MICROSOFT EDGE \n\n\t\t")
+    command = take_command()
+    if "microsoft word" in command:
+        talk("Opening Microsoft Word")
+        subprocess.Popen("C:/Program Files (x86)/Microsoft Office/Office16/WINWORD.exe")
+    elif "microsoft powerpoint" in command:
+        talk("Opening Microsoft Powerpoint")
+        subprocess.Popen("C:/Program Files (x86)/Microsoft Office/Office16/POWERPNT.exe")
+    elif "microsoft excel" in command:
+        talk("Opening Microsoft Excel")
+        subprocess.Popen("C:/Program Files (x86)/Microsoft Office/Office16/EXCEL.exe")
+    elif "google chrome" in command:
+        talk("Opening Google Chrome")
+        subprocess.Popen("C:/Program Files/Google/Chrome/Application/chrome.exe")
+    elif "player" in command:
+        talk("Opening VLC Player")
+        subprocess.Popen("C:/Program Files (x86)/VideoLAN/VLC/vlc.exe")
+    elif "adobe" in command:
+        talk("Opening Adobe PDF viewer")
+        subprocess.Popen("C:/Program Files (x86)/Adobe/Reader 11.0/Reader/AcroRd32.exe")
+    elif "browser" in command:
+        talk("Opening Mozilla Firefox")
+        subprocess.Popen("C:/Program Files/Mozilla Firefox/firefox.exe")
+    elif "notepad" in command:
+        talk("Opening Notepad")
+        subprocess.Popen("C:/Windows/System32/notepad.exe")
+    elif "microsoft edge" in command:
+        talk("Opening Microsoft Edge")
+        subprocess.Popen("C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe")
+    else:
+        talk("Sorry Not Able To Recognize")
 
 
 def run_fox():
@@ -218,7 +252,7 @@ def run_fox():
         application()
 
 
-
+talk("Hello there this is Fox,how can I help you")
 run_fox()
 
 
