@@ -44,7 +44,8 @@ def take_command():
 def weather():
 
     # Enter your API key here
-    api_key = "b06d8716b34951a09cf443cc828adf2c"
+    talk("Enter the api key")
+    api_key=input("Enter the api key")
 
     # base_url variable to store url
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -212,6 +213,9 @@ def run_fox():
 
     elif 'check resume' in command:
         match_resume()
+
+    elif 'open application' in command:
+        application()
 
 
 
